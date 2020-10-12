@@ -38,7 +38,7 @@ client.on("guildCreate", guild => {
 client.on('message', message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-	if(msg.includes('PAPPY BOGGY')){
+	if (message.content.includes('PAPPY BOGGY')){
 		message.delete();
 		message.author.send(`He\'s not your daddy!`)
 	}
@@ -46,7 +46,7 @@ client.on('message', message => {
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
 
-	if (!client.commands.has(command)) return;
+    if (!client.commands.has(command)) return;
 
 	try {
 		client.commands.get(command).execute(message, args);

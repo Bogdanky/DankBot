@@ -8,7 +8,7 @@ module.exports = {
 		const moment = require('moment');
 		const joinedAt = moment.utc(message.member.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')
 		const createdAt = moment.utc(message.member.createdAt).format('dddd, MMMM Do YYYY, HH:mm:ss')
-		userinfo.mfa = message.client.user.mfaEnabled;
+		//userinfo.mfa = message.client.user.mfaEnabled;
 		var embed = new Discord.RichEmbed()
 		.setColor("RANDOM")
 		.setTitle(`${message.author.username}\'s info:`)
