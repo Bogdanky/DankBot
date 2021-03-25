@@ -11,7 +11,7 @@ module.exports = {
             // Basic embed
             var embed = new Discord.RichEmbed()
               .setAuthor(`My ping is ${ping}`)
-              .setColor("Your Color")
+              .setColor("RANDOM")
               
               // Then It Edits the message with the ping variable embed that you created
               m.edit(embed)})

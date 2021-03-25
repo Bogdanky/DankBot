@@ -20,7 +20,7 @@ client.once('ready', () => {
         game: {
             name: 'Use b!help',
             type: "Streaming",
-            url: "https://twitch.tv/rammium"
+            url: "https://twitch.tv/bogdanky"
 	}})
 });
 
@@ -28,7 +28,7 @@ client.on("guildCreate", guild => {
 	// This event triggers when the bot joins a guild.
 	console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
   });
-  
+
   client.on("guildDelete", guild => {
 	// this event triggers when the bot is removed from a guild.
 	console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
@@ -36,12 +36,8 @@ client.on("guildCreate", guild => {
   });
 
 client.on('message', message => {
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-	if (message.content.includes('PAPPY BOGGY')){
-		message.delete();
-		message.author.send(`He\'s not your daddy!`)
-	}
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
