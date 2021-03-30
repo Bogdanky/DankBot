@@ -14,7 +14,7 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
-    console.log('Ready!');
+  console.log('It\'s bully time.');
     client.user.setStatus('online')
     client.user.setPresence({
         game: {
@@ -23,8 +23,12 @@ client.once('ready', () => {
             url: "https://twitch.tv/bogdanky"
 	}})
 });
-client.on('message' , message => {
-  let replies = ["Yo mama is so dumb, she thought Taco Bell was a Mexican phone company.", "Yo mama is so fat, when she fell down it was hilarious. I wasn't laughing, but the floor was cracking up!",
+
+
+client.on('message', message => {
+     
+
+    let replies = ["Yo mama is so dumb, she thought Taco Bell was a Mexican phone company.", "Yo mama is so fat, when she fell down it was hilarious. I wasn't laughing, but the floor was cracking up!",
     "Yo mama's so stupid, she saw \"under 17 not admitted\" so she brought 16 of her friends.", "Yo mama's so ugly, she scared the crap out of the toilet.", 
     "Yo momma is like a brick, She's rough and flat on both sides and she always gets laid by Mexicans.", "Yo momma is so old, when she was young rainbows were black and white.", 
     "Yo Momma is like a bowling ball, she get's picked up, fingered, thrown in a gutter, and the bitch still comes back for more.", 
@@ -210,7 +214,7 @@ if(message.author.bot) return;
       {
         message.react('<:AYAYA:761204100939251722');
       }
-      if(message.author.id === '283559629068173312') {
+      if(message.author.id === '526472888761581588') {
         message.react('<:AYAYA:761204100939251722');
       }
 
@@ -230,35 +234,179 @@ if(message.author.bot) return;
         
       }
 
-})
-client.on("guildCreate", guild => {
-	// This event triggers when the bot joins a guild.
-	console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
+
+
+
+    /* For a retard
+
+    if (message.content === "Retard"){
+        message.channel.send("Did you mean Azzy?");
+    }
+
+    if (message.content === "retard"){
+        message.channel.send("Did you mean Azzy?");
+    }
+    */
+
+    // Stat
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // Below are the commands with prefix 
+    
+    if(!message.content.startsWith(prefix) || message.author.bot) return; 
+
+    const args = message.content.slice(prefix.length).split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    if (command === 'ping') {
+        message.channel.send("Pinging...").then(m =>{
+          // The math thingy to calculate the user's ping
+            var ping = m.createdTimestamp - message.createdTimestamp;
+
+          // Basic embed
+          var embed = new Discord.RichEmbed()
+            .setAuthor(`My ping is ${ping}`)
+            .setColor("RANDOM")
+            
+            // Then It Edits the message with the ping variable embed that you created
+            m.edit(embed)})
+    }
+
+
+    if (command ==='yourmom'){
+        message.channel.send(replies[random]);
+    }
+
+    if (command ==='coinflip'){
+        message.channel.send(coinreplies[randomCoin]);
+    }
+
+
+    if (command ==='avatar'){
+        message.channel.send(message.author.displayAvatarURL());
+    }
+
+   if (command === 'repeat'){
+    message.channel.send(`${message.author.username} said :` + " " + args.slice(0).join(" "))
+   }
+
+
+ 
+
+
+
+
+
+     
+
+
+    /* if (command ==='random')loadCuties(message);
+
+        
+    
+    
+function loadCuties() {
+    fetch('https://www.reddit.com/r/aww.json?limit=100&?sort=top&t=all')
+      .then(res => res.json())
+      .then(json => json.data.children.map(v => v.data.url))
+      .then(urls => postRandomCutie(urls));
+  }
+  
+  function postRandomCutie(urls) {
+    const randomURL = urls[Math.floor(Math.random() * urls.length) + 1];
+    const embed = new Discord.RichEmbed({
+      image: {
+        url: randomURL
+      }
+    });
+    message.channel.send(embed);
+  } */
+    
+
+
+
+    
+} 
+
+); 
+
+// Welcomer 
+
+client.on('guildMemberAdd', member => {
+    // Send the message to a designated channel on a server:
+    const channel = member.guild.channels.cache.find(ch => ch.name === 'mansion-lobby');
+    // Do nothing if the channel wasn't found on this server
+    if (!channel) return;
+    // Send the message, mentioning the member
+    channel.send(`Hey ${member}, welcome to **The Boys' Mansion**! 
+Intrested in looking pretty with some colors and pingable game roles? Checkout <#735481400374984755> and of course, enjoy your stay!`);
   });
 
-  client.on("guildDelete", guild => {
-	// this event triggers when the bot is removed from a guild.
-	console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-	client.user.setActivity(`Serving ${client.guilds.size} servers`);
+
+
+  //Logging - edited messages - doesn't work for now
+
+  client.on("messageUpdates", async(oldMessage, newMessage)=> {
+    if(oldMessage.content === newMessage.content){
+        return;
+    }
+    if(message.author.bot) return; 
+        let logEmbed = new Discord.MessageEmbed()
+        .setAuthor(oldMessage.author.tag, oldMessage.author.displayAvatarURL)
+        .setThumbnail(oldMessage.author.displayAvatarURL)
+        .setColor("RANDOM")
+        .setDescription("Edited message")
+        .addField("Before", oldMessage.content, true)
+        .addField("After", newMessage.content, true)
+        .setTimestamp()
+        .setFooter()
+        
+
+        let loggingChannel = message.guild.channels.cache.find (channel => channel.name === "message-logs");
+      if (!loggingChannel) return;
+      loggingChannel.send(logEmbed);
+        } 
+  );
+
+
+  // end of Loggin - edited messages
+
+  // loggin - deleted messages
+        
+  client.on("messageDelete", async message => {
+      if(message.author.bot) {
+        return; }
+      let loggingEmbed = new Discord.MessageEmbed()
+      .setTitle("Deleted message!")
+      .setColor("#FF0000")
+      .setThumbnail(message.author.displayAvatarURL)
+      .addField("Deleted By:", message.author.tag)
+      .addField("Message:", message.content)
+      .addField("Deleted in:", message.channel)
+      .addField("Deleted At:", message.createdTimestamp)
+      .setTimestamp()
+
+      let loggingChannel = message.guild.channels.cache.find (channel => channel.name === "message-logs");
+      if (!loggingChannel) return;
+      loggingChannel.send(loggingEmbed);
   });
-
-client.on('message', message => {
-
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
-
-	const args = message.content.slice(prefix.length).split(/ +/);
-	const command = args.shift().toLowerCase();
-
-	
-    if (!client.commands.has(command)) return;
-
-	try {
-		client.commands.get(command).execute(message, args);
-	} catch (error) {
-		console.error(error);
-		message.reply('there was an error trying to execute that command!');
-	}
-});
+    
 
 
-client.login(token);
+
+
+// login to Discord with your app's token
+client.login('NzIxMzMxNjQ0MDQwMDg1NTA0.XuS-rg.UFrsoC0j_YzlAS7xvVoAhA_KQoI');
