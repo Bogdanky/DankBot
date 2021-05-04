@@ -112,8 +112,6 @@ if(message.author.bot) return;
         message.channel.send("**LMA**ri**O**"); 
     }
     
-
-    
     if (message.content.toLowerCase().includes('epic')){
         message.channel.send("Epic indeed");
     }
@@ -212,6 +210,9 @@ if(message.author.bot) return;
       }
       if(message.author.id === '283559629068173312') {
         message.react('<:AYAYA:761204100939251722');
+      }
+      if (message.content.toLowerCase().includes('horny')){
+        message.react('<a:bogBonk:837251515092697097>')
       }
 
       if(message.content.toLowerCase().includes('pog')) {
