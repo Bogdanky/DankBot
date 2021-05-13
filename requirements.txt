@@ -1,0 +1,3 @@
+fs
+discord.js
+Discord.RichEmbed
