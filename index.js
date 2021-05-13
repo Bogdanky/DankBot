@@ -200,36 +200,36 @@ if(message.author.bot) return;
     }
 
     // Reactions 
-    if(message.content.toLowerCase().includes('hmm')) {
-        message.react('<:hmmm:747321266649694209');
-        message.channel.send('Hmmmmmmmmm');
-      }
-      if(message.content.toLowerCase().includes('ayaya')) 
-      {
-        message.react('<:AYAYA:761204100939251722');
-      }
-      if(message.author.id === '283559629068173312') {
-        message.react('<:AYAYA:761204100939251722');
-      }
-      if (message.content.toLowerCase().includes('horny')){
-        message.react('<a:bogBonk:837251515092697097>')
-      }
+   // if(message.content.toLowerCase().includes('hmm')) {
+    //    message.react('<:hmmm:747321266649694209');
+    //    message.channel.send('Hmmmmmmmmm');
+    //  }
+   //   if(message.content.toLowerCase().includes('ayaya')) 
+   //   {
+  //      message.react('<:AYAYA:761204100939251722');
+   //   }
+   //   if(message.author.id === '283559629068173312') {
+   //     message.react('<:AYAYA:761204100939251722');
+   //   }
+   //   if (message.content.toLowerCase().includes('horny')){
+   //     message.react('<a:bogBonk:837251515092697097>')
+   //   }
 
-      if(message.content.toLowerCase().includes('pog')) {
-        message.react('<:PogChamp:754227410626674789');
-      }
-      if(message.content.toLowerCase().includes('poggers')) {
-        message.react('<:PogChamp:754227410626674789');
-      }
+   //   if(message.content.toLowerCase().includes('pog')) {
+   //     message.react('<:PogChamp:754227410626674789');
+   //   }
+  //    if(message.content.toLowerCase().includes('poggers')) {
+   //     message.react('<:PogChamp:754227410626674789');
+   //   }
 
 
-      if (message.content.toLowerCase() === 'noice'){
-          message.channel.send('https://i.imgur.com/L97JFyI.png');
-      }
-      if (message.content.toLowerCase() === 'ok'){
-          message.channel.send('OK');
+      //if (message.content.toLowerCase() === 'noice'){
+         // message.channel.send('https://i.imgur.com/L97JFyI.png');
+    //  }
+     // if (message.content.toLowerCase() === 'ok'){
+       //   message.channel.send('OK');
         
-      }
+    //  }
 
 })
 client.on("guildCreate", guild => {

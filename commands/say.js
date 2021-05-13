@@ -4,9 +4,16 @@ module.exports = {
 	execute(message, args) {
 		message.delete(0);
 		{
-		let slur = ['nig ', 'niggu', 'nigg', 'n1g', 'nigger', 'igga', 'kneeg', 'knig ', 'negg', 'negro' ,'fuck you', 'dumbfuck', 'asshole', 'cunt', 'fucker', 'fuck u'];
-    
-		if (message.content.includes('@here') || message.content.includes('@everyone') ||message.content.toLowerCase().includes(slur)) { return;
+		let slur = ['nig ga','nig ', 'niggu', 'nigg', 'n1g', 'nigger', 'igga', 'kneeg', 'knig ', 'negg', 'negro' ,'fuck you', 'dumbfuck', 'asshole', 'cunt', 'fucker', 'fuck u'];
+		
+		let foundInTextSlur = false;
+		for (var i in slur) {
+		  if (message.content.toLowerCase().includes(slur[i].toLowerCase()))
+			foundInTextSlur = true;
+		}
+
+		if (message.content.includes('@here') || message.content.includes('@everyone') ||foundInTextSlur) { return;
+			message.delete(0);
 			} else {
 			{message.channel.send(`${message.author.username} said :` + " " + args.slice(0).join(" "))}
 			}
