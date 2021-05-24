@@ -1,34 +1,29 @@
-  
 const Discord = require('discord.js');
-
+const moment = require('moment');
+//noted
 module.exports = {
-    name: 'user-info',
-    aliases: ['user'],
-    description: 'user information',
-    execute(client, kayn, REGIONS, config, message, args, con, guilds) {
-        let user;
-if (message.mentions.users.first()) {
-    user = message.mentions.users.first();
-} else {
-    user = message.author.id;
-}
+    name: "userinfo",
+    description: "Displays information about a user",
 
-const member = message.guild.member(user);
+    callback:(message, args) =>{
+      let user = message.mentions.users.first() || message.author;
+      let embed = new Discord.MessageEmbed()
+        .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL)
+        .setDescription(`${user}`)
+        .setColor(`RANDOM`) 
+        .setThumbnail(user.displayAvatarURL())
+        .addFields(
+          {name: 'Nickaname', value :`${user.nickname !== null ? `${user.nickname}` : 'None'}`},
+          {name: 'Status:', value: user.presence.status},
+          {name : `In game `, value : `${user.presence.game ? user.presence.game.name : 'None'}`},
+          {name: 'Created at:' , value : `${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")}`},
+          {name: 'Joined at:', value: `${moment.utc(user.joinedAt).format('dddd, MMMM Do YYYY, HH:mm:ss')}`},
+          //{name: 'Roles:', value:  user.roles ? user.roles.map(r => `${r}`).join(' | ') : ""},
+          {name: 'ID:', value: `${user.id}`}
+      )
+        .setTimestamp();
 
-const embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
-    .setThumbnail(message.author.avatarURL)
-    .addField(`${user.tag}`, `${user}`, true)
-    .addField("ID:", `${user.id}`, true)
-    .addField("Nickname:", `${member.nickname !== null ? `${member.nickname}` : 'None'}`, true)
-    .addField("Status:", `${user.presence.status}`, true)
-    .addField("In Server", message.guild.name, true)
-    .addField("Game:", `${user.presence.game ? user.presence.game.name : 'None'}`, true)
-    .addField("Bot:", `${user.bot}`, true)
-    .addField("Joined The Server On:", `${moment.utc(member.joinedAt).format("dddd, MMMM Do YYYY")}`, true)
-    .addField("Account Created On:", `${moment.utc(user.createdAt).format("dddd, MMMM Do YYYY")}`, true) 
-    .addField("Roles:", member.roles.map(roles => `${roles}`).join(', '), true)
-    .setFooter(`Replying to ${message.author.username}#${message.author.discriminator}`)
-message.channel.send({embed});
-}
-    };
+    message.channel.send(embed); // embed is enough
+    return;
+    }
+  }

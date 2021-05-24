@@ -4,12 +4,12 @@ module.exports = {
 	name: 'twitch',
 	cooldown: 10,
 	description: 'Message tagging Twitch Stream Ping Role',
-        execute(message, args) {
+    callback:(message, args)=> {
             message.delete(0);
             if (message.author.id === '526472888761581588'){
                 message.channel.send((args[0]))
         const Discord = require('discord.js');
-        var embed = new Discord.RichEmbed()
+        var embed = new Discord.MessageEmbed()
         .setTitle('Bogdan started streaming! (Click me!)')
         .setURL('https://twitch.tv/bogdanky')
         .setColor("#FF9900")

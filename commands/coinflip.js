@@ -1,7 +1,7 @@
 module.exports = {
     name: 'coinflip',
     description: 'Flips a Coin for better decisions',
-    execute(message, args) {
+    callback:(message, args)=> {
     let replies = [//the answer possibilities 
         "It's Heads",
         "It's Tails",
@@ -10,7 +10,7 @@ module.exports = {
     let result = Math.floor((Math.random() * replies.length));
 
     const Discord = require('discord.js');
-        var embed = new Discord.RichEmbed()
+        var embed = new Discord.MessageEmbed()
         .addField("It's" , replies[result]) //Prints the answer
         .setColor("#FF9900")
         .setFooter(`Invoked by ${message.author.tag}`)

@@ -1,7 +1,7 @@
 module.exports = {
     name: 'qtmeter',
     description: 'The best qt meter',
-    execute(message, args) {
+    callback:(message, args)=> {
         message.delete(0);
     let replies = [
         "😳 Omg you are the cutest ",
@@ -16,7 +16,7 @@ module.exports = {
     let question = args.slice(1).join(" ");
 
     const Discord = require('discord.js');
-        var embed = new Discord.RichEmbed()
+        var embed = new Discord.MessageEmbed()
         .addField("My qtmeter said : " , replies[result])
         .setThumbnail(`https://i.imgur.com/br12vra.png`)
         .setAuthor(`${message.author.username}`)

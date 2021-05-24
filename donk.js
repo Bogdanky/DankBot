@@ -15,12 +15,12 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
     console.log('Ready!');
-    client.user.setStatus('online')
+    client.user.setStatus('Streaming')
     client.user.setPresence({
         game: {
             name: 'Use b!help',
             type: "Streaming",
-            url: "https://twitch.tv/bogdanky"
+            url: "https://twitch.tv/bogdanker"
 	}})
 });
 client.on('message' , message => {
@@ -254,11 +254,12 @@ client.on('message', message => {
     if (!client.commands.has(command)) return;
 
 	try {
-		client.commands.get(command).execute(message, args);
+		client.commands.get(command).callback(message, args);
 	} catch (error) {
 		console.error(error);
 		message.reply('there was an error trying to execute that command!');
 	}
+  
 });
 
 

@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'say',
 	description: 'says' ,
-	execute(message, args) {
+	callback:(message, args)=> {
 		message.delete(0);
 		{
 		let slur = ['nig ga','nig ', 'niggu', 'nigg', 'n1g', 'nigger', 'igga', 'kneeg', 'knig ', 'negg', 'negro' ,'fuck you', 'dumbfuck', 'asshole', 'cunt', 'fucker', 'fuck u'];
@@ -15,7 +15,7 @@ module.exports = {
 		if (message.content.includes('@here') || message.content.includes('@everyone') ||foundInTextSlur) { return;
 			message.delete(0);
 			} else {
-			{message.channel.send(`${message.author.username} said :` + " " + args.slice(0).join(" "))}
+			{message.channel.send(`${message.author.username} said :` + " " + args.slice(0).join(" "),{ tts: true })}
 			}
 
 	}},

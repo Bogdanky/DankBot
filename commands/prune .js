@@ -3,7 +3,7 @@ module.exports = {
 	cooldown: 3,
 	description: 'Prune up to 99 messages.',
 	aliases: ['clear'],
-	execute(message, args) {
+	callback:(message, args)=> {
 		message.delete(0);
 		message.channel.send('Message(s) deleted sucssfully').then(msg => message.delete(5000));
 		const amount = parseInt(args[0]) + 1;

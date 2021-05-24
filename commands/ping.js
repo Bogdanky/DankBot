@@ -1,7 +1,7 @@
 module.exports = {
 	name: 'ping',
 	description: 'Displays Client ping' ,
-	execute(message, args) {
+	callback:(message, args)=> {
         const Discord = require('discord.js');
         const client = new Discord.Client();
         message.channel.send("Pinging...").then(m =>{
@@ -9,7 +9,7 @@ module.exports = {
               var ping = m.createdTimestamp - message.createdTimestamp;
   
             // Basic embed
-            var embed = new Discord.RichEmbed()
+            var embed = new Discord.MessageEmbed()
               .setAuthor(`My ping is ${ping} ms`)
               .setColor("RANDOM")
               

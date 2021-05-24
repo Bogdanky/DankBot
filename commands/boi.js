@@ -1,11 +1,11 @@
 module.exports = {
 	name: 'boi',
 	description: 'boii' ,
-	execute(message, args) {
+	callback:(message, args)=> {
 		message.delete(0);
 		
 		const Discord = require('discord.js');
-        var embed = new Discord.RichEmbed()
+        var embed = new Discord.MessageEmbed()
 		.setTitle("BOI")
 		.setImage(`https://tenor.com/view/boi-emoji-upset-rage-angry-gif-11217263`)
 		.setColor("#FF9900")

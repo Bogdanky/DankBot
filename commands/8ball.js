@@ -1,7 +1,7 @@
 module.exports = {
     name: '8ball',
     description: '8ball of fortune.',
-    execute(message, args) {
+    callback:(message, args)=> {
         if(!args[0]) return message.channel.send('boi enter your thingy here (the question such as) enter b!8ball question...');
     let replies = [
         "It is certain.",
@@ -29,7 +29,7 @@ module.exports = {
     let question = args.slice(1).join(" ");
 
     const Discord = require('discord.js');
-        var embed = new Discord.RichEmbed()
+        var embed = new Discord.MessageEmbed()
         .addField("Question" , args.slice(0).join(" "))
         .addField("Answer" , replies[result])
         .setAuthor(`${message.author.username}`)

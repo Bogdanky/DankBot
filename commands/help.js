@@ -2,7 +2,7 @@ module.exports = {
 	name: 'help',
 	cooldown: 5,
 	description: 'Shows a list of all commands.',
-	execute(message, args) {
+	callback:(message, args)=> {
         // Defines the config.json file.
         const config = require('../config.json');
         const Discord = require('discord.js');
@@ -12,7 +12,7 @@ module.exports = {
         // Gets an array from the client.commands collection, where all of your command information is stored inside of
 		var commandsArray = Array.from(client.commands);
 
-        const embed = new Discord.RichEmbed()
+        const embed = new Discord.MessageEmbed()
             .setColor('RANDOM')
             .setDescription(`Prefix: \`${config.prefix}\``);
 
