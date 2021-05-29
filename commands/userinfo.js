@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const moment = require('moment');
 
-
 function callback(message, args) {
   let user = message.mentions.users.first() || message.author;
   let embed = new Discord.MessageEmbed()
@@ -20,9 +19,8 @@ function callback(message, args) {
   )
     .setTimestamp();
 
-message.channel.send(embed);
+    message.channel.send(embed);
 }
-
 
 module.exports = {
     callback,
