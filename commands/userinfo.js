@@ -1,7 +1,11 @@
-const Discord = require('discord.js');
-const moment = require('moment');
+module.exports = {
+  callback,
+  name: "userinfo",
+  description: "Displays information about a user",
 
-function callback(message, args) {
+  callback:(message, args )=> {
+  
+
   let user = message.mentions.users.first() || message.author;
   let embed = new Discord.MessageEmbed()
     .setAuthor(user.username + '#' + user.discriminator, user.displayAvatarURL)
@@ -21,9 +25,4 @@ function callback(message, args) {
 
     message.channel.send(embed);
 }
-
-module.exports = {
-    callback,
-    name: "userinfo",
-    description: "Displays information about a user",
 }
