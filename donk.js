@@ -15,12 +15,12 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
     console.log('Ready!');
-    client.user.setStatus('Streaming')
+    client.user.setStatus('Online')
     client.user.setPresence({
         game: {
             name: 'Use b!help',
             type: "Streaming",
-            url: "https://twitch.tv/bogdanker"
+            url: "https://twitch.tv/monstercat"
 	}})
 });
 client.on('message' , message => {
