@@ -15,7 +15,7 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
     console.log('Ready!');
-    client.user.setStatus('Streaming')
+    client.user.setStatus('Online')
     client.user.setPresence({
         game: {
             name: 'Use b!help',
