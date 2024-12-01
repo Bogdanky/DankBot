@@ -20,7 +20,7 @@ client.once('ready', () => {
         game: {
             name: 'Use b!help',
             type: "Streaming",
-            url: "https://twitch.tv/bogdanker"
+            url: "https://twitch.tv/bogdanky"
 	}})
 });
 client.on('message' , message => {

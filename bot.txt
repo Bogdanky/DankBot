@@ -1,5 +1,5 @@
 bot.on('ready', () => {
-    console.log('Borrko')
+    console.log('dnk')
     bot.user.setGame(`${bot.guilds.size} servers`, 'https://twitch.tv/monstercat', {
         type: "streaming"
     })
